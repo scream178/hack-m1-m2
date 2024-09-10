@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/358ca475ef.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <!-- HEADER -->
+    <div id="header">
+        <div class="container">
+            <nav>
+                <img src="assets/css/Images/logo.png" class="logo">
+                <ul id="sidemenu">
+                    <li><a href="/index.html#header">Home</a></li>
+                    <li><a href="/index.html#about">About</a></li>
+                    <li><a href="/index.html#services">Services</a></li>
+                    <li><a href="/index.html#portfolio">Portfolio</a></li>
+                    <li><a href="/index.html#contact">Contact</a></li>
+                    <i class="fa-solid fa-xmark" onclick="closemenu()"></i>
+                </ul>
+                <i class="fa-solid fa-bars" onclick="openmenu()"></i>
+            </nav>
+            <div class="header-text">
+                
+                <h1>Hi My Name is<span> Hassan Mahmood </span> <br> From Pakistan.</h1>
+                <!-- Typing -->
+                <p>I'm fairly new in the feild of Web Designing. <br>Here are some of the projects I've worked on.</p>
+            </div>
+        </div>
+    </div>
+
+<!------------------websites  --------------->
+
+<div id="websites">
+    <div class="gallerys">
+
+        <h1>MY WEBSITES</h1>
+        <div class="rows">
+    
+            <!-- First column -->
+            <div class="cols">
+                <a href="https://bagify-leloo.netlify.app/"><img src="assets/css/Images/Screenshots/BAGIFY.png"></a>
+                
+            
+            </div>
+    </div>
+</div>
+
+
+
+
+<!------------------contact  ---------------->
+<div id="contact">
+
+<div class="container">
+    <div class="row">
+        <div class="contact-left">
+            <h1 class="sub-title">Contact Me</h1>
+            <p> <i class="fa-regular fa-envelope"></i>contact@example.com</p>
+            <p> <i class="fa-solid fa-phone"></i>0123456789</p>
+            <div class="social-icons">
+                <a href=""><i class="fa-brands fa-facebook"></i></a>
+                <a href=""><i class="fa-brands fa-twitter-square"></i></a>
+                <a href=""><i class="fa-brands fa-instagram"></i></a>
+                <a href=""><i class="fa-brands fa-linkedin"></i></a>
+                
+            </div>
+            <a href="assets/css/Images/Hassaan Resume.pdf" download class="btn btn2">Download CV</a>
+        </div>
+        <div class="contact-right">
+            <form name="submit-to-google-sheet">
+                <input type="text" name="Name" placeholder="Your Name" required>
+                <input type="email" name="Email" placeholder="Your Email" required>
+                <textarea name="Message" rows="10" placeholder="Your Message"></textarea>
+                <button type="submit" class="btn btn2">Submit</button>
+            </form>
+            <span id="msg"></span>
+        </div>
+    </div>
+    
+</div>
+
+
+</div>
+
+
+
+<div class="copyright">
+    Copyright © Hassan. Made with <i class="fa-solid fa-heart"></i> by Hassan Mahmood.
+</div>
+
+
+<!------------------- TAB CONTENT JS--------------------->
+<script>
+
+   var tablinks = document.getElementsByClassName("tab-links");
+   var tabcontents = document.getElementsByClassName("tab-contents");
+
+   function opentab(tabname){
+    for(tablink of tablinks){
+        tablink.classList.remove("active-link");
+    }
+    for(tabcontent of tabcontents){
+        tabcontent.classList.remove("active-tab");
+    }
+    event.currentTarget.classList.add("active-link");
+    document.getElementById(tabname).classList.add("active-tab");
+   }
+</script>
+
+<!-- JAVA-SCRIPT -->
+    <script src="main.js"></script>
+<!-- TYPING EFFECT -->
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+
+    <script>
+        var typed = new Typed(".auto-typed",{
+            strings: ["Designer.", "Developer.", "Freelancer.", "Photographer."],
+            typeSpeed: 200,
+            backSpeed: 200,
+            loop: true
+        })
+    </script>
+<script>
+    var sidemenu = document.getElementById("sidemenu");
+    function openmenu(){
+        sidemenu.style.right = "0";
+    }
+    function closemenu(){
+        sidemenu.style.right = "-250px";
+    }
+</script>
+
+<script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbyYrbfU1cKrsZ1IqtGuxB0AK3oyNpy6wh290O15XNArbma_wTex9ZIgMnGSFbgeUNstqQ/exec'
+    const form = document.forms['submit-to-google-sheet']
+    const msg = document.getElementById("msg")
+  
+    form.addEventListener('submit', e => {
+      e.preventDefault()
+      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        .then(response => {
+            msg.innerHTML = "Message sent successfully."
+            setTimeout(function(){
+                msg.innerHTML = ""
+            },5000)
+            form.reset()
+        })
+        .catch(error => console.error('Error!', error.message))
+    })
+  </script>
+
+</body>
+</html>
